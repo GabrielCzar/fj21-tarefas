@@ -6,3 +6,4 @@ _Caelum examples_
 - Mysql connector
 - JDK 1.8
 - Apache Tomcat 9
+- Bean Validation
