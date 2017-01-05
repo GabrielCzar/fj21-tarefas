@@ -117,5 +117,21 @@ public class TarefaDao {
 			throw new RuntimeException(e);
 		}
 	}
+	
+	public void finaliza(Long id){
+		String sql = "update tarefa set finalizado=?, dataFinalizacao=? where id=?";
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			stmt.setBoolean(1, true);
+			stmt.setDate(2, new Date(System.currentTimeMillis()));
+			stmt.setLong(3, id);
+
+			stmt.execute();
+			stmt.close();
+		} catch (SQLException e) {
+			throw new RuntimeException(e);
+		}
+	}
 
 }

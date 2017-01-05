@@ -64,5 +64,15 @@ public class TarefasController {
 		dao.altera(tarefa);
 		return "redirect:listaTarefas";
 	}
+	
+	@RequestMapping("finalizaTarefa")
+	public String finaliza(Long id, Model model) throws ServletException {
+		Connection connection = new ConnectionFactory().getConnection();
+		TarefaDao dao = new TarefaDao(connection);
+		dao.finaliza(id);
+		model.addAttribute("tarefa", dao.buscaPorId(id));
+		return "tarefa/dataFinalizada";
+		//response.setStatus(200);
+	}
 
 }
